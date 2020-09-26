@@ -1,0 +1,70 @@
+
+func2.o:     file format elf64-x86-64
+
+
+Disassembly of section .text:
+
+0000000000000000 <numSumG>:
+   0:	f3 0f 1e fa          	endbr64 
+   4:	55                   	push   %rbp
+   5:	48 89 e5             	mov    %rsp,%rbp
+   8:	89 7d ec             	mov    %edi,-0x14(%rbp)
+   b:	8b 45 ec             	mov    -0x14(%rbp),%eax
+   e:	83 e0 01             	and    $0x1,%eax
+  11:	85 c0                	test   %eax,%eax
+  13:	75 1b                	jne    30 <numSumG+0x30>
+  15:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  18:	83 c0 01             	add    $0x1,%eax
+  1b:	0f af 45 ec          	imul   -0x14(%rbp),%eax
+  1f:	89 c2                	mov    %eax,%edx
+  21:	c1 ea 1f             	shr    $0x1f,%edx
+  24:	01 d0                	add    %edx,%eax
+  26:	d1 f8                	sar    %eax
+  28:	89 45 fc             	mov    %eax,-0x4(%rbp)
+  2b:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  2e:	eb 26                	jmp    56 <numSumG+0x56>
+  30:	83 6d ec 01          	subl   $0x1,-0x14(%rbp)
+  34:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  37:	83 c0 01             	add    $0x1,%eax
+  3a:	0f af 45 ec          	imul   -0x14(%rbp),%eax
+  3e:	89 c2                	mov    %eax,%edx
+  40:	c1 ea 1f             	shr    $0x1f,%edx
+  43:	01 d0                	add    %edx,%eax
+  45:	d1 f8                	sar    %eax
+  47:	89 45 fc             	mov    %eax,-0x4(%rbp)
+  4a:	8b 45 ec             	mov    -0x14(%rbp),%eax
+  4d:	83 c0 01             	add    $0x1,%eax
+  50:	01 45 fc             	add    %eax,-0x4(%rbp)
+  53:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  56:	5d                   	pop    %rbp
+  57:	c3                   	retq   
+
+0000000000000058 <numSumaF>:
+  58:	f3 0f 1e fa          	endbr64 
+  5c:	55                   	push   %rbp
+  5d:	48 89 e5             	mov    %rsp,%rbp
+  60:	89 7d ec             	mov    %edi,-0x14(%rbp)
+  63:	c7 45 f8 00 00 00 00 	movl   $0x0,-0x8(%rbp)
+  6a:	c7 45 fc 00 00 00 00 	movl   $0x0,-0x4(%rbp)
+  71:	eb 0a                	jmp    7d <numSumaF+0x25>
+  73:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  76:	01 45 f8             	add    %eax,-0x8(%rbp)
+  79:	83 45 fc 01          	addl   $0x1,-0x4(%rbp)
+  7d:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  80:	3b 45 ec             	cmp    -0x14(%rbp),%eax
+  83:	7e ee                	jle    73 <numSumaF+0x1b>
+  85:	8b 45 f8             	mov    -0x8(%rbp),%eax
+  88:	5d                   	pop    %rbp
+  89:	c3                   	retq   
+
+000000000000008a <main>:
+  8a:	f3 0f 1e fa          	endbr64 
+  8e:	55                   	push   %rbp
+  8f:	48 89 e5             	mov    %rsp,%rbp
+  92:	48 83 ec 10          	sub    $0x10,%rsp
+  96:	8b 45 fc             	mov    -0x4(%rbp),%eax
+  99:	89 c7                	mov    %eax,%edi
+  9b:	e8 00 00 00 00       	callq  a0 <main+0x16>
+  a0:	b8 00 00 00 00       	mov    $0x0,%eax
+  a5:	c9                   	leaveq 
+  a6:	c3                   	retq   
